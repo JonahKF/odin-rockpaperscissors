@@ -1,3 +1,7 @@
+// Initialize score vars
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   randInt = Math.random();
   if (randInt <= 0.33) {
@@ -25,18 +29,19 @@ function getHumanChoice() {
 }
 
 function playGame() {
+  // Reset score vars on game start
   let humanScore = 0;
   let computerScore = 0;
 
-  // for (let i = 0; i < 5; i++) {
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
+  for (let i = 0; i < 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
 
-  playRound(humanSelection, computerSelection);
-  // console.log(computerSelection);
-  console.log("User: " + humanScore);
-  console.log("CPU: " + computerScore);
-  // }
+    playRound(humanSelection, computerSelection);
+    // console.log(computerSelection);
+    console.log("User: " + humanScore);
+    console.log("CPU: " + computerScore);
+  }
 
   if (humanScore > computerScore) {
     console.log("User wins!");
@@ -87,6 +92,5 @@ btnScissors.addEventListener("click", () => {
   playRound("scissors", computerSelection);
 });
 
-
 // Game Start
-playGame();
+// playGame();
