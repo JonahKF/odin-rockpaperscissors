@@ -28,35 +28,15 @@ function playGame() {
   let humanScore = 0;
   let computerScore = 0;
 
-  function playRound(humanChoice, computerChoice) {
-    if (
-      (humanChoice === "rock" && computerChoice === "paper") ||
-      (humanChoice === "paper" && computerChoice === "scissors") ||
-      (humanChoice === "scissors" && computerChoice === "rock")
-    ) {
-      console.log("You lose!");
-      computerScore++;
-    } else if (
-      (humanChoice === "rock" && computerChoice === "scissors") ||
-      (humanChoice === "paper" && computerChoice === "rock") ||
-      (humanChoice === "scissors" && computerChoice === "paper")
-    ) {
-      console.log("You win!");
-      humanScore++;
-    } else {
-      console.log("It's a tie!");
-    }
-  }
+  // for (let i = 0; i < 5; i++) {
+  const humanSelection = getHumanChoice();
+  const computerSelection = getComputerChoice();
 
-  for (let i = 0; i < 5; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-    // console.log(computerSelection);
-    console.log("User: " + humanScore);
-    console.log("CPU: " + computerScore);
-  }
+  playRound(humanSelection, computerSelection);
+  // console.log(computerSelection);
+  console.log("User: " + humanScore);
+  console.log("CPU: " + computerScore);
+  // }
 
   if (humanScore > computerScore) {
     console.log("User wins!");
@@ -66,6 +46,47 @@ function playGame() {
     console.log("It's a tie!");
   }
 }
+
+function playRound(humanChoice, computerChoice) {
+  if (
+    (humanChoice === "rock" && computerChoice === "paper") ||
+    (humanChoice === "paper" && computerChoice === "scissors") ||
+    (humanChoice === "scissors" && computerChoice === "rock")
+  ) {
+    console.log("You lose!");
+    computerScore++;
+  } else if (
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
+  ) {
+    console.log("You win!");
+    humanScore++;
+  } else {
+    console.log("It's a tie!");
+  }
+}
+
+//DOM Buttons
+const btnRock = document.querySelector("#btnRock");
+const btnPaper = document.querySelector("#btnPaper");
+const btnScissors = document.querySelector("#btnScissors");
+
+btnRock.addEventListener("click", () => {
+  const computerSelection = getComputerChoice();
+  playRound("rock", computerSelection);
+});
+
+btnPaper.addEventListener("click", () => {
+  const computerSelection = getComputerChoice();
+  playRound("paper", computerSelection);
+});
+
+btnScissors.addEventListener("click", () => {
+  const computerSelection = getComputerChoice();
+  playRound("scissors", computerSelection);
+});
+
 
 // Game Start
 playGame();
